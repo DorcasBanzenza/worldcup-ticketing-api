@@ -1,23 +1,21 @@
 import { Hono } from 'hono'
 
-const app = new Hono()
+export const app = new Hono()
 
 app.get('/', (c) => {
   return c.json({
-    message: `Bienvenue sur ${process.env.API_NAME || "l'API"}`,
-    environment: process.env.NODE_ENV
+    success: true,
+    message: process.env.API_NAME || "World Cup Ticketing API"
   })
 })
 
+// N'oubliez pas l'endpoint /health demandé dans les exercices précédents
 app.get('/health', (c) => {
   return c.json({
     status: "ok",
     timestamp: new Date().toISOString(),
-    uptime: process.uptime(),
-    apiName: process.env.API_NAME
+    environment: process.env.NODE_ENV || "dev"
   })
 })
-
-export { app }
 
 
