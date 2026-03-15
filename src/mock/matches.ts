@@ -1,8 +1,8 @@
 
 import { Match } from "../domain/entities/Match";
 import { MatchStage } from "../domain/enums/MatchStage";
-import { stadiums } from "./stadiums";
-import { teams } from "./teams";
+import { stadiums } from "../mock/stadiums";
+import { teams } from "../mock/teams";
 
 
 export const matches = [
