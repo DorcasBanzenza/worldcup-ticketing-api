@@ -2,10 +2,10 @@
 import { Country } from "./Country";
 
 export class Team {
-  public readonly id: string;
-  public name: string;
-  public country: Country;
-  public group?: string;
+  id: string
+  name: string
+  country:  Country
+  group?: string
   
   constructor(name: string, country: Country, group?: string) {
     this.id = crypto.randomUUID();

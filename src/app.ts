@@ -1,6 +1,8 @@
-import { Hono } from 'hono'
+import { Hono } from "hono";
+import { matches } from './mock/matches'
 
 export const app = new Hono()
+
 
 app.get('/', (c) => {
   return c.json({
@@ -9,7 +11,7 @@ app.get('/', (c) => {
   })
 })
 
-// N'oubliez pas l'endpoint /health demandé dans les exercices précédents
+
 app.get('/health', (c) => {
   return c.json({
     status: "ok",
