@@ -15,6 +15,9 @@ app.get('/', (c) => {
 app.get('/health', (c) => {
   return c.json({
     status: "ok",
+    success : true,
+    message: "World Cup Ticketing API",
+    uptime: process.uptime(),
     timestamp: new Date().toISOString(),
     environment: process.env.NODE_ENV || "dev"
   })
