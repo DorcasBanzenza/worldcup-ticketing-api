@@ -1,14 +1,11 @@
+import { Stadium } from '@domain/entities/Stadium'
+import { cities } from './cities'
 
-import { Stadium } from "../domain/entities/Stadium";
-import { atlanta, mexicoCity, vancouver } from "./cities";
-
-
-export const stadiums = [
-  new Stadium("Mercedes-Benz Stadium", atlanta, 67382),
-  new Stadium("Estadio Azteca", mexicoCity, 72766),
-  new Stadium("BC Place", vancouver, 54000)
-];
-
-export const mercedesBenz = stadiums[0];
-export const azteca = stadiums[1];
-export const bcPlace = stadiums[2];
+export const stadiums: Stadium[] = [
+  new Stadium(1, 'Mercedes-Benz Stadium', cities[0], 67382),
+  new Stadium(2, 'Estadio Azteca', cities[1], 72766),
+  new Stadium(3, 'BC Place', cities[2], 54000),
+  new Stadium(4, 'AT&T Stadium', cities[3], 70122),
+  new Stadium(5, 'Estadio Akron', cities[4], 44330),
+  new Stadium(6, 'BMO Field', cities[5], 45000)
+]

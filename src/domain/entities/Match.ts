@@ -1,54 +1,45 @@
-
-import { Stadium } from "./Stadium";
-import { Team } from "./Team";
-import { MatchStatus } from "../enums/MatchStatus";
-import { MatchStage } from "../enums/MatchStage";
+import { Stadium } from './Stadium'
+import { Team } from './Team'
+import { MatchStatus } from '../enums/MatchStatus'
+import { MatchStage } from '../enums/MatchStage'
 
 export class Match {
-  public readonly id: string;
-  public stadium: Stadium;
-  public homeTeam: Team;
-  public awayTeam: Team;
-  public datetime: Date;
-  public stage: MatchStage;
-  public status: MatchStatus;
-  public homeScore?: number;
-  public awayScore?: number;
-  
+  id: number
+  homeTeam: Team
+  awayTeam: Team
+  stadium: Stadium
+  date: Date
+  stage: MatchStage
+  status: MatchStatus
+
   constructor(
-    stadium: Stadium,
+    id: number,
     homeTeam: Team,
     awayTeam: Team,
-    datetime: Date,
-    stage: MatchStage
+    stadium: Stadium,
+    date: Date,
+    stage: MatchStage,
+    status: MatchStatus = MatchStatus.SCHEDULED
   ) {
+    this.id = id
+    this.homeTeam = homeTeam
+    this.awayTeam = awayTeam
+    this.stadium = stadium
+    this.date = date
+    this.stage = stage
+    this.status = status
     
+    if (!homeTeam || !awayTeam) {
+      throw new Error('Both home and away teams are required')
+    }
     if (homeTeam.id === awayTeam.id) {
-      throw new Error("Une équipe ne peut pas jouer contre elle-même");
+      throw new Error('Home team and away team cannot be the same')
     }
-    
-    this.id = crypto.randomUUID();
-    this.stadium = stadium;
-    this.homeTeam = homeTeam;
-    this.awayTeam = awayTeam;
-    this.datetime = datetime;
-    this.stage = stage;
-    this.status = MatchStatus.SCHEDULED; 
-  }
-  
-  
-  updateScore(homeScore: number, awayScore: number): void {
-    if (homeScore < 0 || awayScore < 0) {
-      throw new Error("Les scores ne peuvent pas être négatifs");
+    if (!stadium) {
+      throw new Error('Stadium is required')
     }
-    
-    this.homeScore = homeScore;
-    this.awayScore = awayScore;
-    this.status = MatchStatus.COMPLETED;
-  }
-  
-
-  postpone(): void {
-    this.status = MatchStatus.POSTPONED;
+    if (!date || isNaN(date.getTime())) {
+      throw new Error('Valid date is required')
+    }
   }
 }

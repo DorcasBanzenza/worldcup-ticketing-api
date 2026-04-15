@@ -1,5 +1,12 @@
 {
   "compilerOptions": {
-    "types": ["node"]
+    "types": ["node"],
+    "strict": true,
+    "jsx": "react-jsx",
+    "jsxImportSource": "hono/jsx",
+    "paths": {
+      "@domain/*": ["./src/domain/*"],
+      "@mock/*": ["./src/mock/*"]
+    }
   }
 }
