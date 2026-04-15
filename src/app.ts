@@ -1,26 +1,23 @@
-import { Hono } from "hono";
-import { matches } from './mock/matches'
+import { Hono } from 'hono'
 
-export const app = new Hono()
-
+const app = new Hono ()
 
 app.get('/', (c) => {
+  const apiName = process.env.API_NAME || 'World Cup Ticketing API'
   return c.json({
     success: true,
-    message: process.env.API_NAME || "World Cup Ticketing API"
+    message: 'World Cup Ticketing API'
   })
 })
-
-
-app.get('/health', (c) => {
+app.get('/health',(c)=>{
   return c.json({
-    status: "ok",
-    success : true,
-    message: "World Cup Ticketing API",
-    uptime: process.uptime(),
-    timestamp: new Date().toISOString(),
-    environment: process.env.NODE_ENV || "dev"
+    success: true, 
+    status: 'OK',
+    message:'World Cup Ticketing API',
+    uptime:process.uptime(),
+    environment: process.env.NODE_ENV || 'developement',
   })
 })
+export {app}
 
 
